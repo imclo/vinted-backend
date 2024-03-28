@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const uid2 = require("uid2");
 const SHA256 = require("crypto-js/sha256");
@@ -22,6 +23,7 @@ const convertToBase64 = (file) => {
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 mongoose.connect(process.env.MONGODB_URI);
 
