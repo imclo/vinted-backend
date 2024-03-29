@@ -33,6 +33,7 @@ router.post(
           { ETAT: req.body.condition },
           { COULEUR: req.body.color },
           { EMPLACEMENT: req.body.city },
+          { PAIEMENT: req.body.payment },
         ],
 
         owner: req.owner,
