@@ -15,7 +15,7 @@ const convertToBase64 = (file) => {
 
 const User = require("../models/User");
 
-router.post("/user/signup", async (req, res) => {
+router.post("/user/signup", fileUpload(), async (req, res) => {
   try {
     // console.log(req.body);
 
@@ -31,10 +31,12 @@ router.post("/user/signup", async (req, res) => {
     const existingUser = await User.find({ email: req.body.email });
     // console.log(existingUser.email);
 
+    console.log(existingUser);
     if (existingUser.length > 0) {
       return res.status(400).json({ message: "email already existed" });
     }
 
+    console.log(req.body.username);
     if (req.body.username.length === 0) {
       return res.status(400).json({ message: "no username defined" });
     }
@@ -54,7 +56,7 @@ router.post("/user/signup", async (req, res) => {
     // Upload avatar to the request
     if (req.files?.avatar) {
       const convertedPicture = convertToBase64(req.files.avatar);
-      const uploadResult = await cloudinary.uploader.upload(
+      let uploadResult = await cloudinary.uploader.upload(
         convertedPicture,
         { folder: `/vinted/users/${newUser._id}` },
         function (error, result) {
