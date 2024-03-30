@@ -91,7 +91,7 @@ router.get("/offers", isAuthenticated, async (req, res) => {
     }
 
     if (req.query.page) {
-      limit = 5;
+      limit = 10;
       skip = (req.query.page - 1) * limit;
     }
 
