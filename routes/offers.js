@@ -116,7 +116,7 @@ router.get("/offers", async (req, res) => {
   }
 });
 
-router.get("/offers/:id", async (req, res) => {
+router.get("/offer/:id", async (req, res) => {
   try {
     const offer = await Offer.findById(req.params.id).populate(
       "owner",
