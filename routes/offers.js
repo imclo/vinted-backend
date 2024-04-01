@@ -54,7 +54,7 @@ router.post(
   }
 );
 
-router.get("/offers", isAuthenticated, async (req, res) => {
+router.get("/offers", async (req, res) => {
   try {
     // console.log("query", req.query);
     let limit = 20;
