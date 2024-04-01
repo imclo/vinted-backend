@@ -104,7 +104,7 @@ router.get("/offers", async (req, res) => {
       .sort(sortType)
       .select();
 
-    const result = await Offer.countDocuments(filters);
+    const count = await Offer.countDocuments(filters);
     // const count = result.length;
 
     res.json({
