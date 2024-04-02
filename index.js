@@ -29,9 +29,11 @@ mongoose.connect(process.env.MONGODB_URI);
 
 const usersRoutes = require("./routes/users");
 const offersRoutes = require("./routes/offers");
+const paymentRoutes = require("./routes/payment");
 
 app.use(usersRoutes);
 app.use(offersRoutes);
+app.use(paymentRoutes);
 
 app.all("*", (req, res) => {
   res.status(404).json({ message: "This route does not exist" });
